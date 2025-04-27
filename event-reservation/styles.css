@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.invitation {
+  width: 600px;
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border: 8px solid #c49a3e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  width: 100px;
+  height: 50px;
+  object-fit: contain;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  margin: 15px 0;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  /* padding: 0 10px; */
+}
+
+.badge {
+  width: 120px;
+  margin: 5px 0;
+  height: 150px;
+}
+
+.message {
+  font-size: 14px;
+  padding: 0 5px;
+  color: #555;
+}
+
+.guest-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 5px 0;
+  border: 3px solid #c49a3e;
+  object-fit: cover;
+}
+
+.register-button {
+  width: 50%;
+  padding: 12px;
+  background: #c49a3e;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+register-button:hover {
+  background: #c49a3e;
+}
+
+.honour {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+}
+
+.details {
+  background: #f9f2e8;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer {
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+  margin-top: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+/* ------------------------------------ FORM STYLES ------------------------------------ */
+
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(196, 154, 62, 0.5);
+  width: 500px;
+  text-align: center;
+  color: #000;
+}
+
+.form-container h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-container p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+input {
+  width: 80%;
+  padding: 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #000;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(196, 154, 62, 0.4);
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+input[readonly] {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+  transform: scale(1.2);
+  width: 15px;
+  height: 15px;
+  justify-self: left;
+  padding-left: 30px;
+}
+
+.terms{
+  justify-self: left;
+  padding-left: 30px;
+  font-size: 14px;
+}
+button {
+  width: 60%;
+  padding: 12px;
+  background: #c49a3e;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 10px rgba(196, 154, 62, 0.5);
+}
+
+button:hover {
+  background: #a37822;
+  box-shadow: 0 3px 12px rgba(196, 154, 62, 0.7);
+}
+.party-package {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  margin-top: 10px;
+  padding-left: 30px;
+  width: 80%;
+}
+
+.package-title {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-weight: 600;
+  justify-self: left;
+  padding-left: 30px;
+}
+.party-package label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  padding: 8px !important;
+}
+
+input[type="radio"]:checked {
+  background: #c49a3e;
+  border-color: #c49a3e;
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#otherPackageInput {
+  width: 80%;
+  padding: 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #000;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(196, 154, 62, 0.4);
+}
+
+/* -------------------- modal styles -------------------- */
+/* Hide modal initially */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content img {
+  margin-top: 15px;
+  width: 200px;
+  height: 200px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
