@@ -15,12 +15,7 @@
         <input type="text" id="fullName" placeholder="Full Name" required />
         <input type="email" id="email" placeholder="Email Address" required />
         <input type="tel" id="phone" placeholder="Phone Number" required />
-        <input
-          type="text"
-          id="companyName"
-          placeholder="Company Name"
-          required
-        />
+        <input type="text" id="companyName" placeholder="Company Name" required />
         <input type="text" id="eventDate" value="23rd March 2025" readonly />
         <input type="text" id="eventTime" value="7:00 PM - 9:00 PM" readonly />
 
@@ -42,26 +37,47 @@
         </div>
 
         <p class="terms">
-          <input type="checkbox" id="terms" required /> I agree to the terms and
-          conditions
+          <input type="checkbox" id="terms" required /> I agree to the terms and conditions
         </p>
 
         <button type="submit">Submit</button>
       </form>
     </div>
 
-    <!-- Modal for QR Code -->
-    <!-- <div id="qrModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>Your Entry Ticket</h3>
-        <img id="qrCode" alt="QR Code" />
-        <p>Please Take Screenshot For Reference</p>
-      </div>
-    </div> -->
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwMxi6Xw7vMgj9nKP9jJd81WWTfjWxIhQwB2NiXwhlk_mHHKiHJ1nimMPSjSy21qtXIlg/exec"; // replace with Apps Script URL
+      const form = document.getElementById("reservationForm");
 
-    <script src="qrGenerate.js"></script>
-    <!-- Link to external JS file -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // collect data
+        const data = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          companyName: document.getElementById("companyName").value,
+          eventDate: document.getElementById("eventDate").value,
+          eventTime: document.getElementById("eventTime").value,
+          package: document.querySelector("input[name='package']:checked")?.value || "",
+          terms: document.getElementById("terms").checked ? "Agreed" : "Not Agreed",
+        };
+
+        // send to Google Apps Script
+        fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.text())
+          .then((msg) => {
+            alert("Reservation submitted successfully!");
+            form.reset();
+          })
+          .catch((err) => {
+            console.error("Error:", err);
+            alert("There was an error submitting the form.");
+          });
+      });
+    </script>
   </body>
 </html>
