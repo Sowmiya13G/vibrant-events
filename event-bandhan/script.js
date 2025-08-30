@@ -1,4 +1,4 @@
-const scriptURL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; // replace with your Google Apps Script Web App URL
+const scriptURL = "https://script.google.com/macros/s/AKfycbwBOLCqXYNOMMHEzV8_42sdp1xeMxqj4vpSkeb735-ddRb-tF0jLJovKR8UfIPvb2Zc/exec"; // replace with your Apps Script URL
 const form = document.getElementById("registerForm");
 
 form.addEventListener("submit", (e) => {
