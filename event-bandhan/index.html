@@ -20,7 +20,7 @@
         color: #fff;
         margin: 5% 0;
       }
-     
+
       .hero img {
         max-width: 100%;
         height: auto;
@@ -48,23 +48,23 @@
       .img-container {
         max-width: 100%;
         height: auto;
-        position: relative; /* ✅ anchor for absolute children */
+        position: relative;
         display: flex;
         flex-direction: column;
       }
 
       .img-container a button {
         position: absolute;
-        bottom: 5%; /* adjust vertical position */
-        left: 50%; /* center horizontally */
-        transform: translateX(-50%); /* fine center */
+        bottom: 6%;
+        left: 50%;
+        transform: translateX(-50%);
         background: #ef7b40;
         border: none;
-        padding:8px 8px ;
-        max-width: 200px;
+        padding: 8px 8px;
+        width: clamp(120px, 40%, 220px);
         border-radius: 4px;
         color: #fff;
-        font-size: 20px;
+        font-size: clamp(0.5rem, 2.5vw, 1.5rem);
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
@@ -77,29 +77,52 @@
       }
 
       @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2rem;
+        /* body {
+          display: flex;
+          align-items: flex-start;
+        } */
+        .hero {
+          width: 100%;
+          margin: 0;
         }
-        .hero p {
-          font-size: 1rem;
-        }
-        .hero button {
-          font-size: 16px;
-          padding: 12px 22px;
+
+        .hero img {
+          border-radius: 0;
         }
       }
     </style>
   </head>
   <body>
-    <section class="hero">
-      <!-- Rendered image -->
+    <div id="loader" class="loader">Loading...</div>
+    <section class="hero" id="hero">
       <div class="img-container">
-        <img src="assets/banner.jpg" alt="Event Banner" />
-
-        <a href="form.html">
-          <button>Register Now</button>
+        <img
+          src="assets/banner.jpg"
+          alt="Event Banner"
+          id="heroImage"
+          loading="lazy"
+        />
+        <a href="form.html" >
+          <button id="registerBtn">Register Now</button>
         </a>
       </div>
     </section>
+    <script>
+      const loader = document.getElementById("loader");
+      const hero = document.getElementById("hero");
+      const heroImage = document.getElementById("heroImage");
+      const registerBtn = document.getElementById("registerBtn");
+      // Show hero only when image is fully loaded
+      heroImage.addEventListener("load", () => {
+        loader.style.display = "none";
+        hero.style.display = "block";
+        registerBtn.style.display = "block";
+      });
+
+      // Fallback: if image fails to load
+      heroImage.addEventListener("error", () => {
+        loader.innerText = "Failed to load image 😢";
+      });
+    </script>
   </body>
 </html>
