@@ -1,83 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Landing Page</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Landing Page</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
 
-    .hero {
-      background-image: url("assets/banner.jpg"); /* replace with your actual banner file */
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      height: 100vh;
-      width: 60%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      align-self: center;
-      color: #fff;
-      padding: 20px;
-    }
+      .hero {
+        height: 100%;
+        width: 60%;
+        display: flex;
+        color: #fff;
+        margin: 5% 0;
+      }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-    }
+      .hero img {
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+        border-radius: 12px;
+        object-fit: contain;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        position: relative;
+      }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      max-width: 700px;
-      line-height: 1.5;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-
-    .hero button {
-      background: #e53935;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .hero button:hover {
-      background: #b71c1c;
-    }
-
-    @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
       }
+
       .hero p {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        max-width: 700px;
+        line-height: 1.5;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
       }
-      .hero button {
-        font-size: 16px;
-        padding: 12px 22px;
+
+      .img-container {
+        max-width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
       }
-    }
-  </style>
-</head>
-<body>
-  <section class="hero">
-    <a href="form.html">
-      <button>Register Now</button>
-    </a>
-  </section>
-</body>
+
+      .img-container a button {
+        position: absolute;
+        bottom: 6%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ef7b40;
+        border: none;
+        padding: 8px 8px;
+        width: clamp(120px, 40%, 220px);
+        border-radius: 4px;
+        color: #fff;
+        font-size: clamp(0.5rem, 2.5vw, 1.5rem);
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      .img-container a button:hover {
+        background: #ca6532;
+      }
+
+      @media (max-width: 768px) {
+        /* body {
+          display: flex;
+          align-items: flex-start;
+        } */
+        .hero {
+          width: 100%;
+          margin: 0;
+        }
+
+        .hero img {
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader">Loading...</div>
+    <section class="hero" id="hero">
+      <div class="img-container">
+        <img
+          src="assets/banner.jpg"
+          alt="Event Banner"
+          id="heroImage"
+          loading="lazy"
+        />
+        <a href="form.html" >
+          <button id="registerBtn">Register Now</button>
+        </a>
+      </div>
+    </section>
+    <script>
+      const loader = document.getElementById("loader");
+      const hero = document.getElementById("hero");
+      const heroImage = document.getElementById("heroImage");
+      const registerBtn = document.getElementById("registerBtn");
+      // Show hero only when image is fully loaded
+      heroImage.addEventListener("load", () => {
+        loader.style.display = "none";
+        hero.style.display = "block";
+        registerBtn.style.display = "block";
+      });
+
+      // Fallback: if image fails to load
+      heroImage.addEventListener("error", () => {
+        loader.innerText = "Failed to load image 😢";
+      });
+    </script>
+  </body>
 </html>
